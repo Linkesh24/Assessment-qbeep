@@ -6,9 +6,9 @@ This is a frontend project created for the purpose of an assessment. It is desig
 
 ## Features
 
-- **Feature 1**: Description of the feature (e.g., "A responsive user interface").
-- **Feature 2**: Description of the feature (e.g., "Interactive elements with smooth animations").
-- **Feature 3**: Description of the feature (e.g., "Integration with external APIs for dynamic content").
+- **Feature 1**: A responsive user interface.
+- **Feature 2**: Interactive elements with smooth animations.
+- **Feature 3**: Integration with external APIs for dynamic content.
 
 ## Getting Started
 
