@@ -269,7 +269,7 @@ nav {
     font-weight: normal;
     padding-bottom: 18px ;
     padding-bottom: 18px;
-    border-bottom: 1px solid #EDEDED; /* Optional: border for entire header area */
+    border-bottom: 1px solid #EDEDED;
 }
 
 .header-link {
@@ -286,9 +286,9 @@ nav {
 .header-current {
     font-size: 16px;
     font-weight: bold;
-    color: #222; /* Make Sales Orders stand out */
-    border-bottom: 2px solid #222; /* Bottom border for active page */
-    padding-bottom: 4px; /* Add spacing between text and border */
+    color: #222; 
+    border-bottom: 2px solid #222; 
+    padding-bottom: 4px;
 }
 
 .table-controls {
@@ -334,7 +334,6 @@ nav {
     background-color: transparent;
     border-radius: 15px;
     width: 300px;
-    /* margin-right: auto; */
     border: 1px solid #DADADA;
 }
 
@@ -359,7 +358,7 @@ nav {
 }
 
 .menu-container {
-    position: relative; /* Ensures the dropdown is positioned correctly */
+    position: relative; 
 }
 
 .menu-btn{
@@ -381,7 +380,7 @@ nav {
     width: 300px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    display: none; /* Initially hidden */
+    display: none; 
     flex-direction: column;
     overflow: hidden;
 }
@@ -404,13 +403,12 @@ nav {
     width: 16px;
     height: 16px;
     margin-right: 8px;
-    opacity: 0; /* Fully hidden */
-    transition: opacity 0.3s; /* Smooth fade-in effect */
+    opacity: 0; 
+    transition: opacity 0.3s; 
 }
 
-/* Show the icon only on hover */
 .menu-item:hover .menu-icon {
-    opacity: 1; /* Make the icon visible */
+    opacity: 1; 
 }
 
 
@@ -429,15 +427,13 @@ nav {
     background: #FFEDEE;
 }
 
-/* For showing the dropdown */
 .dropdown-menu.show {
     display: flex;
 }
 
 
-/* Container for Order Details */
 .order-details-container {
-    display: none; /* Initially hidden */
+    display: none; 
     width: 100%;
     max-width: 400px;
     background-color: #fff;
@@ -448,10 +444,9 @@ nav {
 }
 
 .order-details-container.active {
-    display: block; /* Show the details container */
+    display: block; 
 }
 
-/* Header */
 .order-details h2 {
     font-size: 22px;
     font-weight: bold;
@@ -459,7 +454,6 @@ nav {
     color: #333;
 }
 
-/* Section Titles */
 .order-details p {
     margin: 10px 0;
     color: #555;
@@ -469,7 +463,6 @@ nav {
     color: #333;
 }
 
-/* Item List Styling */
 .order-details .item {
     display: flex;
     align-items: center;
@@ -494,7 +487,6 @@ nav {
     color: #333;
 }
 
-/* Summary Section */
 .order-details .summary {
     background-color: #F5F5F5;
     border-radius: 8px;
@@ -522,7 +514,6 @@ nav {
     margin-top: 10px;
 }
 
-/* Close Button */
 .close-details {
     background: none;
     border: 1px solid #DADADA ;

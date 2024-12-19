@@ -1,11 +1,9 @@
 // #main.js - Placeholder to include dynamic functionality
 document.addEventListener('DOMContentLoaded', function () {
-    // Chart Functionality - Only on Dashboard Page
     if (document.getElementById('revenueChart')) {
-        updateChart('7days'); // Default view
+        updateChart('7days'); 
     }
 
-    // Add click event for navigation buttons (only if they exist)
     const navButtons = document.querySelectorAll('.nav-menu button');
     if (navButtons.length > 0) {
         navButtons.forEach(button => {
@@ -16,17 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Fetch Orders Table - Only on Sales Orders Page
     if (document.querySelector('#ordersTable tbody')) {
         fetchOrders();
     }
 
-    // Search Functionality - Sales Orders Page
     if (document.getElementById('searchInput')) {
         document.getElementById('searchInput').addEventListener('input', searchTable);
     }
 
-    // Filter Functionality - Sales Orders Page
     if (document.getElementById('filterStatus')) {
         document.getElementById('filterStatus').addEventListener('change', filterTable);
     }
@@ -46,16 +41,14 @@ let chartInstance;
 
 function createChart(chartId, labels, data, gradientBorderColors, gradientFillColors) {
     const canvas = document.getElementById(chartId);
-    if (!canvas) return; // Safeguard
+    if (!canvas) return; 
 
     const ctx = canvas.getContext('2d');
 
-    // Create gradient for border
     const gradientBorder = ctx.createLinearGradient(0, 0, 0, 400);
     gradientBorder.addColorStop(0, gradientBorderColors[0]);
     gradientBorder.addColorStop(1, gradientBorderColors[1]);
 
-    // Create gradient for fill
     const gradientFill = ctx.createLinearGradient(0, 400, 0, 0);
     gradientFill.addColorStop(0, gradientFillColors[0]);
     gradientFill.addColorStop(1, gradientFillColors[1]);
@@ -150,11 +143,10 @@ async function fetchOrders() {
 
         const tableBody = document.querySelector('#ordersTable tbody');
         if (!tableBody) return;
-        tableBody.innerHTML = ''; // Clear existing data
+        tableBody.innerHTML = ''; 
 
         orders.forEach(order => {
 
-             // Special case for "Waiting for pickup"
              let statusClass = order.status.toLowerCase().replace(/\s/g, '');
              if (order.status === "Waiting for pickup") {
                  statusClass = "waiting";
@@ -194,11 +186,10 @@ async function fetchAllOrders() {
 
         const tableBody = document.querySelector('#salesTable tbody');
         if (!tableBody) return;
-        tableBody.innerHTML = ''; // Clear existing data
+        tableBody.innerHTML = '';
 
         orders.forEach(order => {
 
-             // Special case for "Waiting for pickup"
              let statusClass = order.status.toLowerCase().replace(/\s/g, '');
              if (order.status === "Waiting for pickup") {
                  statusClass = "waiting";
@@ -240,14 +231,11 @@ async function fetchAllOrders() {
 
 fetchAllOrders();
 
-// Function to view order details
 async function viewOrderDetails(orderId) {
     try {
-        // Fetch order details from the API
         const response = await fetch(`https://675d8ea663b05ed079782f36.mockapi.io/orderDetails/${orderId}`);
         const order = await response.json();
 
-        // Populate the details container
         const detailsContent = document.getElementById('orderDetailsContent');
         detailsContent.innerHTML = `
             <h2>Order details</h2>
@@ -275,13 +263,9 @@ async function viewOrderDetails(orderId) {
             </div>
         `;
 
-        // Show details and adjust table layout
-        // document.getElementById('orderDetails').classList.add('active');
-        // document.querySelector('.sales-table-container').classList.add('collapsed');
         const detailsContainer = document.getElementById("orderDetails");
         if (detailsContainer) {
             detailsContainer.classList.add('active');
- // Show the details container
         } else {
             console.error('Order details container not found');
         }
@@ -290,13 +274,10 @@ async function viewOrderDetails(orderId) {
     }
 }
 
-// Function to close the order details view
 function closeOrderDetails() {
-    // document.getElementById('orderDetails').classList.remove('active');
-    // document.querySelector('.sales-table-container').classList.remove('collapsed');
     const detailsContainer = document.getElementById('orderDetails');
     if (detailsContainer) {
-        detailsContainer.classList.remove('active'); // Hide the details container
+        detailsContainer.classList.remove('active'); 
     } 
 }
 
@@ -308,26 +289,22 @@ document.addEventListener('click', (event) => {
     if (isMenuBtn) {
         const dropdownMenu = isMenuBtn.nextElementSibling;
 
-        // Close other open dropdowns
         allDropdowns.forEach(menu => {
             if (menu !== dropdownMenu) {
                 menu.classList.remove('show');
             }
         });
 
-        // Toggle the current dropdown
         dropdownMenu.classList.toggle('show');
     } else {
-        // Close all dropdowns when clicking outside
         allDropdowns.forEach(menu => menu.classList.remove('show'));
     }
 });
 
-let currentPage = 1; // Current page
-let rowsPerPage = 10; // Default rows per page
-let tableData = []; // Data fetched from API
+let currentPage = 1;
+let rowsPerPage = 10; 
+let tableData = []; 
 
-// Fetch data and initialize table
 async function fetchData() {
     try {
         const response = await fetch('https://675d8ea663b05ed079782f36.mockapi.io/orders');
@@ -338,7 +315,6 @@ async function fetchData() {
     }
 }
 
-// Render table based on current page and rows per page
 function renderTable() {
     const tableBody = document.querySelector('#salesTable tbody');
     tableBody.innerHTML = '';
@@ -348,10 +324,8 @@ function renderTable() {
 
     const paginatedData = tableData.slice(startIndex, endIndex);
 
-    // Populate the table
     paginatedData.forEach((row) => {
 
-        // Special case for "Waiting for pickup"
         let statusClass = row.status.toLowerCase().replace(/\s/g, '');
         if (row.status === "Waiting for pickup") {
             statusClass = "waiting";
@@ -392,7 +366,6 @@ function renderTable() {
     updatePaginationButtons();
 }
 
-// Attach delete button event listeners
 function attachDeleteEventListeners() {
     const deleteButtons = document.querySelectorAll('.menu-item.delete');
     deleteButtons.forEach((button) => {
@@ -400,7 +373,6 @@ function attachDeleteEventListeners() {
     });
 }
 
-// Handle delete operation
 async function handleDelete(event) {
     const deleteButton = event.currentTarget;
     const orderId = deleteButton.getAttribute('data-id');
@@ -408,7 +380,6 @@ async function handleDelete(event) {
 
     if (confirmed) {
         try {
-            // Send DELETE request to the API
             const response = await fetch(`https://675d8ea663b05ed079782f36.mockapi.io/orders/${orderId}`, {
                 method: 'DELETE',
             });
@@ -417,10 +388,8 @@ async function handleDelete(event) {
                 throw new Error(`Failed to delete order. Status: ${response.status}`);
             }
 
-            // Remove the row from the data array
             tableData = tableData.filter((row) => row.id !== orderId);
 
-            // Re-render the table
             renderTable();
 
             alert(`Order #${orderId} deleted successfully.`);
@@ -431,14 +400,12 @@ async function handleDelete(event) {
     }
 }
 
-// Change rows per page dynamically
 function updateRowsPerPage() {
     rowsPerPage = parseInt(document.getElementById('rowsPerPageSelect').value);
-    currentPage = 1; // Reset to first page
+    currentPage = 1;
     renderTable();
 }
 
-// Update pagination info
 function updatePaginationInfo() {
     const totalRows = tableData.length;
     const start = (currentPage - 1) * rowsPerPage + 1;
@@ -446,7 +413,6 @@ function updatePaginationInfo() {
     document.getElementById('paginationInfo').innerText = `${start}-${end} of ${totalRows}`;
 }
 
-// Change pages (next/previous)
 function changePage(direction) {
     const maxPage = Math.ceil(tableData.length / rowsPerPage);
     currentPage += direction;
@@ -457,14 +423,12 @@ function changePage(direction) {
     renderTable();
 }
 
-// Enable/disable buttons based on page
 function updatePaginationButtons() {
     const maxPage = Math.ceil(tableData.length / rowsPerPage);
     document.getElementById('prevPage').disabled = currentPage === 1;
     document.getElementById('nextPage').disabled = currentPage === maxPage;
 }
 
-// Initialize table data
 fetchData();
 
 
