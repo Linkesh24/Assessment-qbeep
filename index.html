@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- Dashboard Navigation -->
+    <nav>
+        <div class="nav-menu">
+            <button>Dashboard</button>
+            <button>Users</button>
+            <button>Merchants</button>
+            <button>Transactions</button>
+            <button>Vouchers</button>
+            <button>Coins</button>
+            <button>Assets</button>
+            <button>Settings</button>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <button class="search-btn" onclick="searchContainer()"> <img src="assets/icon _search.png"> </button>
+                <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="profile-container">
+                <img src="assets/profile picture.png" alt="Profile Picture" class="profile-pic">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Section -->
+    <section class="dashboard">
+        <div class="cards">
+            <div class="card">Total Revenue<br><span class="cards-bold">$11,523.70</span> <br><span class="cards-white">From last month</span></div>
+            <div class="card">Total new user<br><b><span class="cards-bold">+20</span></b><br><span class="cards-white">From last month</span></div>
+            <div class="card">Total new merchant<br><b><span class="cards-bold">+3</span></b><br><span class="cards-white">From last month</span></div>
+            <div class="card">Total active user<br><b><span class="cards-bold">+250</span></b><br><span class="cards-white">Currently</span></div>
+        </div>
+        <div class="container">
+        <div class="chart-container">
+            <!-- Placeholder for graph -->
+           
+            <canvas id="revenueChart"></canvas>
+            <div class="button-group">
+        <button onclick="updateChart('today')" id="todayBtn">Today</button>
+        <button onclick="updateChart('yesterday')" id="yesterdayBtn">Yesterday</button>
+        <button onclick="updateChart('7days')" id="7daysBtn" class="active">7 days</button>
+        <button onclick="updateChart('30days')" id="30daysBtn">30 days</button>
+        <button onclick="updateChart('60days')" id="60daysBtn">60 days</button>
+        <button onclick="updateChart('1year')" id="1yearBtn">1 year</button>
+    </div>
+        </div>
+
+        <table class="orders-table" id="ordersTable">
+        <thead>
+                <td colspan="4">Sales Order</td>
+            <td><span class="table-button"> <button onclick="window.location.href='sales-orders.html'">View All</button>
+            </span></td>
+        </thead>
+            
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Buyer</th>
+                <th>Merchant</th>
+                <th>Status</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Orders</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-menu">
+            <button onclick="window.location.href='index.html'">Dashboard</button>
+            <button>Users</button>
+            <button>Merchants</button>
+            <button>Transactions</button>
+            <button>Vouchers</button>
+            <button>Coins</button>
+            <button>Assets</button>
+            <button>Settings</button>
+            
+            <div class="new-profile-container">
+                <img src="assets/profile picture.png" alt="Profile Picture" class="new-profile-pic">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sales Orders Section -->
+    <section class="viewAllSales">
+        
+        
+        <!-- Header Section -->
+        <div class="header-table">
+            <a href="index.html" class="header-link">Dashboard</a>
+            <span class="header-current">Sales Orders</span>
+        </div>
+
+        <div class="sales-table-container">
+
+            <div class="sales-table">
+                <!-- Controls Section -->
+                <div class="table-controls">
+                    <!-- Search Bar -->
+                    <div class="search-table">
+                        <button class="search-btn" onclick="searchTable()">
+                            <img src="assets/icon _search.png" alt="Search Icon">
+                        </button>
+                        <input type="text" id="searchTableInput" placeholder="Search" class="search-table-input">
+                    </div>
+        
+                    <!-- Filter and Options -->
+                    <div class="filter-container">
+                        <!-- Sort -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/sort.png" alt="Sort Icon">
+                            </div>
+                            <span class="filter-select">Sort</span>
+                        </div>
+        
+                        <!-- Filter -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/filter.png" alt="Filter Icon">
+                            </div>
+                            <span class="filter-select">Filter</span>
+                        </div>
+        
+                        <!-- View -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/Frame 6339.png" alt="View Icon">
+                            </div>
+                            <span class="filter-select">View</span>
+                        </div>
+        
+                        <!-- PDF Export -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/picture_as_pdf.png" alt="Export to PDF">
+                            </div>
+                        </div>
+        
+                        <!-- Vector -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/vector.png" alt="Vector Icon">
+                            </div>
+                        </div>
+        
+                        <!-- Print -->
+                        <div class="filter-table">
+                            <div class="filter-image">
+                                <img src="assets/print.png" alt="Print Icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Table Section -->
+                    <table class="sales-table" id="salesTable">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Buyer</th>
+                                <th>Merchant</th>
+                                <th>Status</th>
+                                <th>Date/Time</th>
+                                <th>Amount</th>
+                                <th>More</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be dynamically added via JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    </div>
+                    <div class="order-details-container" id="orderDetails">
+                        <button class="close-details" onclick="closeOrderDetails()">Close</button>
+                        <div id="orderDetailsContent" class="order-details">
+                            <!-- Order details will be dynamically populated -->
+                        </div>
+                    </div>
+        </div>
+        <div class="pagination">
+            <span>Row per page</span>
+            <select id="rowsPerPageSelect" onchange="updateRowsPerPage()">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        
+            <span id="paginationInfo">1-10 of 100</span>
+        
+            <button id="prevPage" onclick="changePage(-1)" disabled>&#9664;</button>
+            <button id="nextPage" onclick="changePage(1)">&#9654;</button>
+        </div>
+        
+            
+    </section>
+
+
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
